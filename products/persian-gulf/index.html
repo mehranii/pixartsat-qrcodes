@@ -477,7 +477,7 @@
       <div class="header-wave"></div>
       <div class="container header-content">
         <div class="logo">
-          <img src="logo.png" alt="PixArtSat Logo" />
+          <img src="images/logo.png" alt="PixArtSat Logo" />
           <div class="logo-text">
             <h1>PixArtSat</h1>
             <!-- <p>راهکارهای جغرافیایی هنری</p> -->
@@ -499,10 +499,7 @@
           <div class="product-body">
             <div class="qr-section">
               <div class="qr-container">
-                <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.google.com/maps/@?api=1&map_action=map&basemap=satellite&center=30.35,49.07&zoom=15"
-                  alt="QR Code"
-                />
+                <img src="images/persian-gulf.png" alt="QR Code" />
               </div>
               <div class="qr-info">
                 <h3>دسترسی سریع به موقعیت جغرافیایی</h3>
@@ -592,10 +589,7 @@
                   </div>
                 </div>
 
-                <button
-                  class="map-btn"
-                  onclick="window.open('https://www.google.com/maps/@?api=1&map_action=map&basemap=satellite&center=30.35,49.07&zoom=10', '_blank')"
-                >
+                <button class="map-btn" onclick="openMap(30.35, 49.07, 10)">
                   مشاهده در Google Maps
                   <i class="fas fa-external-link-alt"></i>
                 </button>
@@ -690,3 +684,10 @@
     </script>
   </body>
 </html>
+
+<script>
+  function openMap(lat, lng, zoom) {
+    const url = `https://www.google.com/maps/@${lat},${lng},${zoom}z/data=!3m1!1e3`;
+    window.open(url, "_blank");
+  }
+</script>
