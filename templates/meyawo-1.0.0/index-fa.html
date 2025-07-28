@@ -13,22 +13,14 @@
     <link rel="stylesheet" href="assets/css/meyawo.css">
     <!-- استایل‌های راست‌چین برای فارسی -->
     <style>
-        body {
+        {% comment %} body {
             text-align: right;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .about-caption p, .service-card .subtitle, .testimonial-card-subtitle {
             text-align: justify;
             line-height: 1.8;
-        }
-        .language-switcher {
-            margin-left: 0;
-            margin-right: 15px;
-        }
-        .language-option img {
-            margin-right: 0;
-            margin-left: 8px;
-        }
+        } {% endcomment %}
         .social-links {
             text-align: left !important;
         }
@@ -37,9 +29,9 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
-    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20" dir="ltr">
         <div class="container">
-            <a class="logo" href="#">پیکسل‌ست</a>
+            <a class="logo" href="#">PixArtSat</a>
             <ul class="nav">
                 <li class="item">
                     <a class="link" href="#home">خانه</a>
@@ -61,14 +53,14 @@
             <!-- تغییر زبان -->
             <div class="language-switcher">
                 <button class="language-btn">
-                    <img src="https://flagcdn.com/w20/ir.png" alt="فارسی" class="language-flag" id="current-flag">
+                    <img src="assets/imgs/ir.png" alt="فارسی" class="language-flag" id="current-flag">
                 </button>
                 <div class="language-dropdown">
                     <a href="index-fa.html" class="language-option">
-                        <img src="https://flagcdn.com/w20/ir.png" alt="فارسی"> فارسی
+                        <img src="assets/imgs/ir.png" alt="فارسی"> فارسی
                     </a>
                     <a href="index.html" class="language-option">
-                        <img src="https://flagcdn.com/w20/gb.png" alt="English"> English
+                        <img src="assets/imgs/gb.png" alt="English"> English
                     </a>
                 </div>
             </div>
@@ -84,7 +76,7 @@
     <!-- هدر صفحه -->
     <header id="home" class="header">
         <div class="overlay"></div>
-        <div class="header-content container">
+        <div class="header-content container" style="margin-right: 40px;">
             <h1 class="header-title">
                 <span class="up">سلام!</span>
                 <span class="down">من مهران رحمانی هستم</span>
@@ -111,14 +103,9 @@
                     <p class="section-subtitle">من کی هستم؟</p>
                     <h2 class="section-title mb-3">درباره من</h2>
                     <p>
-                        من متخصص سنجش از دور با مدرک کارشناسی ارشد در منابع آب هستم که تمرکز اصلی‌ام بر تحلیل تصاویر ماهواره‌ای با استفاده از داده‌های لندست، سنتینل و مادیس است. کار من پلی بین علم، فناوری و طراحی است - از پایش محصولات کشاورزی و ارزیابی کیفیت آب تا ساخت سیستم‌های هوشمند کشاورزی.
-
-به عنوان توسعه‌دهنده فرانت‌اند با تخصص در وب جی‌آی‌اس، پلتفرم‌های تعاملی مکانی ایجاد می‌کنم.
-<br>من هم‌بنیان‌گذار سی‌فرم، یک سیستم مدیریت کشاورزی هوشمند و خالق پیکسل‌ست، یک برند شخصی که تصاویر ماهواره‌ای را به آثار هنری تبدیل می‌کند، هستم.
-
-در پروژه‌های ملی در زمینه هواشناسی و کشاورزی هوشمند، از جمله سیستم‌های هشدار طوفان‌های گرد و غبار، نقشه‌برداری محصولات، پایش کیفیت آب و سیستم‌های پشتیبان تصمیم‌گیری برای آبیاری بهینه کار کرده‌ام.
-
-علاقه‌مند به طبیعت، نوآوری و روایت‌گری بصری، همواره به دنبال ترکیب علم، محیط زیست و هنر برای ایجاد تأثیر معنادار هستم.
+                        من متخصص سنجش از دور با مدرک کارشناسی ارشد در منابع آب هستم که تمرکز اصلی‌ام بر تحلیل تصاویر ماهواره‌ای با استفاده از داده‌های ماهواره های لندست، سنتینل و مادیس است. کار من پلی بین علم، فناوری و طراحی است - از پایش محصولات کشاورزی و ارزیابی کیفیت آب تا ساخت سیستم‌های هوشمند کشاورزی. به عنوان توسعه‌دهنده فرانت‌اند با تخصص در وب جی‌آی‌اس، پلتفرم‌های تعاملی مکانی با سیستم اطلاعات جغرافیایی ایجاد می‌کنم.
+<br> 
+من هم‌بنیان‌گذار seefarm ، یک سیستم مدیریت کشاورزی هوشمند و خالق Pixartsat، یک برند شخصی که تصاویر ماهواره‌ای را به آثار هنری تبدیل می‌کند، هستم. در پروژه‌های ملی در زمینه هواشناسی و کشاورزی هوشمند، از جمله سیستم‌های پایش، پیشبینی و اعلان هشدار طوفان‌های گرد و غبار، تولید نقشه های طبقه بندی گیاهی، پایش کیفیت آب و سیستم‌های پشتیبان تصمیم‌گیری برای آبیاری بهینه کار کرده‌ام. علاقه‌مند به طبیعت، نوآوری و روایت‌گری بصری، همواره به دنبال ترکیب علم، محیط زیست و هنر برای ایجاد تأثیر معنادار هستم.
                     </p>
                     <button class="btn-rounded btn btn-outline-primary mt-4">دانلود رزومه</button>
                 </div>
@@ -140,7 +127,7 @@
                                 alt="خلاقیت"
                                 class="icon">
                             <h6 class="title">خلاقیت</h6>
-                            <p class="subtitle">از طریق پیکسل‌ست، داده‌های ماهواره‌ای را با طراحی بصری ترکیب می‌کنم و آثاری خلق می‌کنم که علم، طبیعت و هنر را در هم می‌آمیزد.</p>
+                            <p class="subtitle">از طریق Pixartsat، داده‌های ماهواره‌ای را با طراحی بصری ترکیب می‌کنم و آثاری خلق می‌کنم که علم، طبیعت و هنر را در هم می‌آمیزد.</p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +149,7 @@
                                 alt="تأثیر"
                                 class="icon">
                             <h6 class="title">تأثیر</h6>
-                            <p class="subtitle"> به عنوان هم‌بنیان‌گذار سی‌فرم، بر ساخت راهکارهای کشاورزی هوشمند که پایداری را ترویج و تصمیم‌گیری را توانمند می‌سازد، تمرکز دارم.</p>
+                            <p class="subtitle"> به عنوان یکی از بنیان‌گذاران سیفارم، بر ساخت راهکارهای کشاورزی هوشمند که پایداری را ترویج و تصمیم‌گیری را توانمند می‌سازد، تمرکز دارم.</p>
                         </div>
                     </div>
                 </div>
@@ -173,7 +160,7 @@
                                 alt="علم"
                                 class="icon">
                             <h6 class="title">علم</h6>
-                            <p class="subtitle">از سنجش از دور و علوم محیطی برای پایش محصولات، ارزیابی کیفیت آب و پیش‌بینی رویدادهای طبیعی با استفاده از تصاویر ماهواره‌ای بهره می‌برم.</p>
+                            <p class="subtitle">از سنجش از دور و علوم محیطی برای پایش محصولات کشاورزی و پیش‌بینی رویدادهای طبیعی با استفاده از تصاویر ماهواره‌ای بهره می‌برم.</p>
                         </div>
                     </div>
                 </div>
