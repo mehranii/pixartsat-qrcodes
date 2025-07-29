@@ -1,0 +1,58 @@
+{
+    "product_specs": {
+      "technical": [
+        {
+          "icon": "fa-map-marker-alt",
+          "label": "موقعیت جغرافیایی:",
+          "value": "30.35° N, 49.07° E"
+        },
+        {
+          "icon": "fa-ruler-combined",
+          "label": "ابعاد تابلو:",
+          "value": "120 × 80 سانتیمتر"
+        },
+        {
+          "icon": "fa-ruler",
+          "label": "ابعاد واقعی تصویر:",
+          "value": "12 × 8 کیلومتر"
+        },
+        {
+          "icon": "fa-palette",
+          "label": "جنس:",
+          "value": "آکریلیک ضد آب با چاپ UV"
+        },
+        {
+          "icon": "fa-sun",
+          "label": "مقاومت:",
+          "value": "مقاوم در برابر نور خورشید و رطوبت"
+        },
+        {
+          "icon": "fa-calendar-alt",
+          "label": "سال تولید:",
+          "value": "2023"
+        }
+      ],
+      "art_description": {
+        "title": "توضیحات هنری",
+        "content": "این اثر هنری با ترکیب باندهای 5، 4 و 3 ماهواره لندست خلق شده است. برخلاف تصاویر RGB طبیعی، این ترکیب باندی امکان مشاهده جزئیات نامرئی را فراهم می‌کند. پردازش‌های دقیق رنگ و کنتراست باعث شده ویژگی‌های منحصر به فرد منطقه با وضوح بالا نمایش داده شود."
+      },
+      "spectral_data": {
+        "satellite": "Landsat",
+        "used_bands": ["B5", "B4", "B3"],
+        "wavelengths": {
+          "B5": 0.85,
+          "B4": 0.65,
+          "B3": 0.56
+        }
+      },
+      "map_coordinates": {
+        "lat": 30.35,
+        "lng": 49.07,
+        "zoom": 10
+      },
+      "artist_profile": {
+        "image": "images/mehranRemoved.jpg",
+        "portfolio_link": "../../templates/meyawo-1.0.0/index.html"
+      }
+    }
+  }
