@@ -167,6 +167,9 @@
     transition: var(--transition);
     width: 100%;
     max-width: 300px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
   }
   
   .qr-container:hover {
@@ -176,8 +179,8 @@
   }
   
   .qr-container img {
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 235px;
     object-fit: contain;
   }
   
@@ -329,6 +332,7 @@
     margin-top: 30px;
     background: rgba(24, 26, 47, 0.5);
     padding: 20px;
+    font-size: 0.75rem;
     border-radius: var(--border-radius);
     border: 1px solid rgba(253, 164, 129, 0.2);
   }
@@ -460,7 +464,7 @@
     justify-content: center;
     background: linear-gradient(to right, var(--dark-accent), var(--darker-accent));
     color: white;
-    padding: 12px 25px;
+    padding: 20px 25px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
@@ -470,6 +474,7 @@
     cursor: pointer;
     font-size: 1rem;
     flex-grow: 1;
+    gap: 5px;
   }
   
   .map-btn:hover {
@@ -487,7 +492,7 @@
     align-items: center;
     gap: 10px;
     background: rgba(253, 164, 129, 0.1);
-    padding: 12px 20px;
+    padding: 8px 20px;
     border-radius: 50px;
     border: 1px solid rgba(253, 164, 129, 0.3);
     cursor: pointer;
@@ -502,8 +507,8 @@
   }
   
   .portfolio-profile img {
-    width: 36px;
-    height: 36px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--accent-color);
@@ -686,6 +691,10 @@
     .chart-container {
       height: 250px;
     }
+    .audio-section h3 {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
   }
   
   /* حالت چاپ */
@@ -818,4 +827,66 @@
   padding: 2px 5px;
   font-size: 0.7rem;
   margin-right: 5px;
+}
+
+
+/* استایل کلی برای کانتینر گالری */
+.gallery-container {
+  position: relative;
+  padding: 0 40px; /* فضای کافی برای دکمه‌ها */
+}
+
+/* استایل دکمه‌های ناوبری */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(253, 164, 129, 0.7);
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* تغییر رنگ هنگام هاور */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* آیکون‌های دکمه‌ها */
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+/* موقعیت دکمه‌ها */
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+/* استایل برای حالت موبایل */
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 16px;
+  }
+  
+  .gallery-container {
+    padding: 0 30px;
+  }
 }

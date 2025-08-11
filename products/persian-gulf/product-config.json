@@ -8,18 +8,18 @@
         },
         {
           "icon": "fa-ruler-combined",
-          "label": "ابعاد تابلو:",
-          "value": "120 × 80 سانتیمتر"
+          "label": "ابعاد تصویر:",
+          "value": "20 × 25 cm"
         },
         {
           "icon": "fa-ruler",
           "label": "ابعاد واقعی تصویر:",
-          "value": "12 × 8 کیلومتر"
+          "value": "61.05 × 77.67 km"
         },
         {
           "icon": "fa-palette",
           "label": "جنس:",
-          "value": "آکریلیک ضد آب با چاپ UV"
+          "value": "متالیک لوکس با چاپ اختصاصی"
         },
         {
           "icon": "fa-sun",
@@ -29,7 +29,7 @@
         {
           "icon": "fa-calendar-alt",
           "label": "سال تولید:",
-          "value": "2023"
+          "value": "2025"
         }
       ],
       "art_description": {
