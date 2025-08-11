@@ -21,11 +21,31 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Initialize audio player
+  // Initialize audio player with new features
   const audioPlayer = document.getElementById("audioPlayer");
   const playBtn = document.getElementById("playBtn");
   const progressBar = document.getElementById("progressBar");
+  const speedBtn = document.getElementById("speedBtn");
+  const speedIndicator = document.getElementById("speedIndicator");
 
-  if (audioPlayer && playBtn && progressBar) {
+  // Play automatically when page loads
+  document.addEventListener("DOMContentLoaded", function () {
+    audioPlayer.load();
+    audioPlayer
+      .play()
+      .then(() => {
+        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      })
+      .catch((error) => {
+        console.log("Auto-play was prevented:", error);
+      });
+  });
+
+  if (audioPlayer && playBtn && progressBar && speedBtn) {
+    let playbackRates = [1.0, 1.5, 2.0];
+    let currentRateIndex = 0;
+
+    // Play/Pause functionality
     playBtn.addEventListener("click", function () {
       if (audioPlayer.paused) {
         audioPlayer.play();
@@ -36,17 +56,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    // Speed control functionality
+    speedBtn.addEventListener("click", function () {
+      currentRateIndex = (currentRateIndex + 1) % playbackRates.length;
+      const newRate = playbackRates[currentRateIndex];
+      audioPlayer.playbackRate = newRate;
+      speedBtn.textContent = `${
+        playbackRates[(currentRateIndex + 1) % playbackRates.length]
+      }x`;
+      speedIndicator.textContent = `${newRate}x`;
+    });
+
+    // Progress bar update
     audioPlayer.addEventListener("timeupdate", function () {
       const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
       progressBar.style.width = progress + "%";
     });
 
+    // Reset when audio ends
     audioPlayer.addEventListener("ended", function () {
       playBtn.innerHTML = '<i class="fas fa-play"></i>';
       progressBar.style.width = "0%";
+      audioPlayer.currentTime = 0;
     });
   }
-
   // Load product specs from JSON
   fetch("product-config.json")
     .then((response) => {
