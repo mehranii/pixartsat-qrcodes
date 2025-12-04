@@ -54,32 +54,69 @@
               <!-- بخش پخش کننده صوتی -->
               <div class="audio-section">
                 <h3>داستان ماهواره‌ای که این اثر را خلق کرد</h3>
+
                 <div class="audio-player">
-                  <button id="playBtn" class="audio-control">
+                  <button id="playBtn" class="audio-control" title="پخش / مکث">
                     <i class="fas fa-play"></i>
                   </button>
+
                   <div class="audio-info">
                     <div class="audio-title">
-                      هنر طول موج ها
-                      <span id="speedIndicator" class="speed-indicator"
-                        >1x</span
-                      >
+                      <div class="title-text">هنر طول موج ها</div>
+                      <div id="speedIndicator" class="speed-indicator">1x</div>
                     </div>
-                    <div class="audio-progress">
-                      <div class="progress-bar" id="progressBar"></div>
+
+                    <!-- waveform container (WaveSurfer نمایشگر) -->
+                    <div id="waveform"></div>
+
+                    <!-- سطر کنترل‌های اضافی: زمان، جلو/عقب، سرعت -->
+                    <div class="controls-row">
+                      <div style="display: flex; gap: 6px; align-items: center">
+                        <button
+                          id="ffBtn"
+                          class="action-btn"
+                          title="15 ثانیه جلو"
+                        >
+                          <i class="fas fa-forward"></i>
+                        </button>
+                        <button
+                          id="rewBtn"
+                          class="action-btn"
+                          title="15 ثانیه عقب"
+                        >
+                          <i class="fas fa-backward"></i>
+                        </button>
+                      </div>
+
+                      <div class="time" id="currentTime">00:00</div>
+
+                      <div style="flex: 1"></div>
+
+                      <div class="speed-picker">
+                        <button id="speedBtn" class="action-btn">x1</button>
+                        <div
+                          id="speedList"
+                          class="speed-list"
+                          aria-hidden="true"
+                        >
+                          <button data-rate="0.5">0.5x</button>
+                          <button data-rate="0.75">0.75x</button>
+                          <button data-rate="1">1x</button>
+                          <button data-rate="1.25">1.25x</button>
+                          <button data-rate="1.5">1.5x</button>
+                          <button data-rate="2">2x</button>
+                        </div>
+                      </div>
+
+                      <div class="time" id="duration">--:--</div>
                     </div>
                   </div>
-                  <button
-                    id="speedBtn"
-                    class="speed-control"
-                    title="تغییر سرعت پخش"
-                  >
-                    1.5x
-                  </button>
+
+                  <!-- المان صوتی (برای سازگاری و fallback) -->
                   <audio
                     id="audioPlayer"
-                    src="../../scripts/pixartsat_64k.mp3"
                     preload="auto"
+                    style="display: none"
                   ></audio>
                 </div>
               </div>
@@ -270,6 +307,7 @@
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

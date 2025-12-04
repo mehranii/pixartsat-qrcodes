@@ -28,7 +28,7 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 5px;
   }
   
   /* هدر */
@@ -87,7 +87,7 @@
   
   /* بخش اصلی */
   .main-content {
-    padding: 40px 0;
+    padding: 10px 0;
   }
   
   .product-card {
@@ -137,8 +137,8 @@
   .product-body {
     display: grid;
     grid-template-columns: minmax(300px, 1fr) minmax(400px, 1.5fr);
-    gap: 30px;
-    padding: 30px;
+    gap: 20px;
+    padding: 15px;
     align-items: start;
   }
   
@@ -159,7 +159,7 @@
   }
   
   .qr-container {
-    padding: 15px;
+    padding: 10px;
     border: 1px solid rgba(253, 164, 129, 0.3);
     border-radius: var(--border-radius);
     background: var(--primary-color);
@@ -186,7 +186,7 @@
   
   .qr-info {
     text-align: center;
-    padding: 0 15px;
+    padding: 0 10px;
   }
   
   .qr-info h3 {
@@ -201,71 +201,48 @@
   }
   
   /* بخش پخش کننده صوتی */
-  .audio-section {
-    width: 100%;
-    background: rgba(24, 26, 47, 0.7);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    border: 1px solid rgba(253, 164, 129, 0.2);
-    margin-top: 20px;
-  }
-  
-  .audio-section h3 {
-    color: var(--accent-color);
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  
-  .audio-player {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .audio-control {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    flex-shrink: 0;
-  }
-  
-  .audio-control:hover {
-    transform: scale(1.1);
-    background: var(--dark-accent);
-  }
-  
-  .audio-info {
-    flex-grow: 1;
-  }
-  
-  .audio-title {
-    color: white;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-  }
-  
-  .audio-progress {
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  .progress-bar {
-    height: 100%;
-    background: var(--accent-color);
-    width: 0%;
-    transition: width 0.1s linear;
-  }
+  .audio-section{width:100%; background: var(--bg); border-radius:var(--border-radius); padding:16px; border:1px solid rgba(253,164,129,0.14)}
+.audio-section h3{color:var(--accent-color); margin:0 0 12px; font-size:1.05rem; text-align:center}
+
+
+/* پلیر */
+.audio-player{display:flex; gap:12px; align-items:center}
+.audio-control{width:48px; height:48px; border-radius:50%; background:var(--accent-color); color:#fff; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:var(--transition)}
+.audio-control:hover{transform:scale(1.06); background:var(--dark-accent)}
+
+
+.audio-info{flex:1; min-width:0}
+.audio-title{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px}
+.audio-title .title-text{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:0.95rem}
+.speed-indicator{background:rgba(255,255,255,0.06); padding:4px 8px; border-radius:6px; font-size:0.85rem}
+
+
+/* کانتینر ویوفورم */
+#waveform{height:86px; border-radius:8px; overflow:hidden; background:rgba(255,255,255,0.02);}
+
+
+.controls-row{display:flex; gap:10px; align-items:center; margin-top:10px}
+
+
+.time{font-size:0.84rem; min-width:76px; text-align:center}
+
+
+.action-btn{background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:8px 10px; border-radius:8px; cursor:pointer}
+.action-btn:hover{background:rgba(255,255,255,0.02)}
+
+
+.speed-picker{position:relative}
+.speed-list{position:absolute; right:0; top:44px; background:#0d0f18; border:1px solid rgba(255,255,255,0.04); border-radius:8px; padding:6px; display:none; box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.speed-list button{display:block; width:100%; text-align:center; padding:6px 12px; border-radius:6px; background:transparent; color:#fff; border:none; cursor:pointer}
+.speed-list button:hover{background:rgba(255,255,255,0.03)}
+
+
+/* واکنش‌گرایی */
+@media (max-width:560px){
+.audio-player{flex-direction:column; align-items:stretch}
+.controls-row{justify-content:space-between}
+.time{min-width:56px}
+}
   
   /* گالری تصاویر */
   .gallery-section {
@@ -331,7 +308,7 @@
   .details-section {
     margin-top: 30px;
     background: rgba(24, 26, 47, 0.5);
-    padding: 20px;
+    padding: 10px;
     font-size: 0.75rem;
     border-radius: var(--border-radius);
     border: 1px solid rgba(253, 164, 129, 0.2);
@@ -416,7 +393,7 @@
     height: 300px;
     background: rgba(24, 26, 47, 0.5);
     border-radius: var(--border-radius);
-    padding: 15px;
+    padding: 2px;
     margin-bottom: 15px;
   }
   

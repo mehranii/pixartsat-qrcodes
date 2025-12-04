@@ -22,64 +22,114 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize audio player
   // Initialize audio player with new features
-  const audioPlayer = document.getElementById("audioPlayer");
-  const playBtn = document.getElementById("playBtn");
-  const progressBar = document.getElementById("progressBar");
-  const speedBtn = document.getElementById("speedBtn");
-  const speedIndicator = document.getElementById("speedIndicator");
+  // المان‌ها
 
-  // Play automatically when page loads
-  document.addEventListener("DOMContentLoaded", function () {
-    audioPlayer.load();
-    audioPlayer
-      .play()
-      .then(() => {
-        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      })
-      .catch((error) => {
-        console.log("Auto-play was prevented:", error);
-      });
+  const playBtn = document.getElementById("playBtn");
+  const speedBtn = document.getElementById("speedBtn");
+  const speedList = document.getElementById("speedList");
+  const speedIndicator = document.getElementById("speedIndicator");
+  const currentTimeEl = document.getElementById("currentTime");
+  const durationEl = document.getElementById("duration");
+  const rewBtn = document.getElementById("rewBtn");
+  const ffBtn = document.getElementById("ffBtn");
+  const audioEl = document.getElementById("audioPlayer");
+
+  const AUDIO_SRC = "../../scripts/pixartsat_64k.mp3";
+  audioEl.src = AUDIO_SRC;
+
+  // WaveSurfer v7
+  const wavesurfer = WaveSurfer.create({
+    container: "#waveform",
+    media: audioEl,
+    waveColor: "rgba(255,255,255,0.2)",
+    progressColor: "var(--accent-color)",
+    cursorColor: "var(--accent-color)",
+    barWidth: 2,
+    height: 72,
   });
 
-  if (audioPlayer && playBtn && progressBar && speedBtn) {
-    let playbackRates = [1.0, 1.5, 2.0];
-    let currentRateIndex = 0;
+  // Autoplay try
+  document.addEventListener("DOMContentLoaded", () => {
+    audioEl.play().catch(() => {});
+  });
 
-    // Play/Pause functionality
-    playBtn.addEventListener("click", function () {
-      if (audioPlayer.paused) {
-        audioPlayer.play();
-        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      } else {
-        audioPlayer.pause();
-        playBtn.innerHTML = '<i class="fas fa-play"></i>';
-      }
-    });
+  // Play / Pause
+  playBtn.addEventListener("click", () => {
+    wavesurfer.playPause();
+    updatePlayBtn();
+  });
 
-    // Speed control functionality
-    speedBtn.addEventListener("click", function () {
-      currentRateIndex = (currentRateIndex + 1) % playbackRates.length;
-      const newRate = playbackRates[currentRateIndex];
-      audioPlayer.playbackRate = newRate;
-      speedBtn.textContent = `${
-        playbackRates[(currentRateIndex + 1) % playbackRates.length]
-      }x`;
-      speedIndicator.textContent = `${newRate}x`;
-    });
-
-    // Progress bar update
-    audioPlayer.addEventListener("timeupdate", function () {
-      const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-      progressBar.style.width = progress + "%";
-    });
-
-    // Reset when audio ends
-    audioPlayer.addEventListener("ended", function () {
-      playBtn.innerHTML = '<i class="fas fa-play"></i>';
-      progressBar.style.width = "0%";
-      audioPlayer.currentTime = 0;
-    });
+  function updatePlayBtn() {
+    playBtn.innerHTML = wavesurfer.isPlaying()
+      ? '<i class="fas fa-pause"></i>'
+      : '<i class="fas fa-play"></i>';
   }
+
+  // Skip backward / forward
+  rewBtn.addEventListener("click", () => {
+    wavesurfer.setTime(Math.max(0, wavesurfer.getCurrentTime() - 15));
+  });
+  ffBtn.addEventListener("click", () => {
+    wavesurfer.setTime(
+      Math.min(wavesurfer.getDuration(), wavesurfer.getCurrentTime() + 15)
+    );
+  });
+
+  // Time update
+  wavesurfer.on("audioprocess", () => {
+    currentTimeEl.textContent = formatTime(wavesurfer.getCurrentTime());
+  });
+
+  wavesurfer.on("ready", () => {
+    durationEl.textContent = formatTime(wavesurfer.getDuration());
+  });
+
+  // Helpers
+  function formatTime(sec) {
+    if (!isFinite(sec)) return "--:--";
+    const s = Math.floor(sec % 60)
+      .toString()
+      .padStart(2, "0");
+    const m = Math.floor(sec / 60)
+      .toString()
+      .padStart(2, "0");
+    return `${m}:${s}`;
+  }
+
+  // اگر بخوای می‌تونیم marker یا regions اضافه کنیم — اما این نسخه پایه و حرفه‌ای برای اسکراب و سرعت است.
+  // کنترل سرعت — لیست ساده
+  speedBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    speedList.style.display =
+      speedList.style.display === "block" ? "none" : "block";
+    speedList.setAttribute("aria-hidden", speedList.style.display === "none");
+  });
+
+  speedList.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const rate = parseFloat(btn.dataset.rate);
+      wavesurfer.setPlaybackRate(rate);
+      speedIndicator.textContent = rate + "x";
+      speedList.style.display = "none";
+    });
+  });
+
+  // کلیک خارج برای بستن منو
+  document.addEventListener("click", (e) => {
+    if (!speedBtn.contains(e.target) && !speedList.contains(e.target)) {
+      speedList.style.display = "none";
+    }
+  });
+
+  // وقتی کاربر مستقیم در audioEl کنترل کنه (fallback)
+  audioEl.addEventListener("play", updatePlayBtn);
+  audioEl.addEventListener("pause", updatePlayBtn);
+
+  // برای خواندن دقیق زمان در mobile زمانی که wavesurfer به روز نمیشود
+  audioEl.addEventListener("timeupdate", () => {
+    currentTimeEl.textContent = formatTime(audioEl.currentTime);
+  });
+
   // Load product specs from JSON
   fetch("product-config.json")
     .then((response) => {
