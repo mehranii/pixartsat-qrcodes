@@ -1,24 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize Swiper
-  var swiper = new Swiper(".gallery-container", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    centeredSlides: true,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 1.5,
-      },
-    },
-  });
 
   // Initialize audio player
   // Initialize audio player with new features
@@ -306,27 +287,240 @@ function initSpectralChart(spectralData) {
   });
 }
 
-// Modal functions
-function openModal(src) {
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImage");
-  if (!modal || !modalImg) return;
-
-  modal.classList.add("show");
-  modalImg.src = src;
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  const modal = document.getElementById("imageModal");
-  if (!modal) return;
-
-  modal.classList.remove("show");
-  document.body.style.overflow = "auto";
-}
-
 // Open map function
 function openMap(lat, lng, zoom) {
   const url = `https://www.google.com/maps/@${lat},${lng},${zoom}z/data=!3m1!1e3`;
   window.open(url, "_blank");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize Swiper
+  const gallerySwiper = new Swiper(".gallery-container", {
+    direction: "horizontal",
+    loop: true,
+    speed: 400,
+    spaceBetween: 10,
+    slidesPerView: 1,
+    centeredSlides: true,
+    grabCursor: true,
+    touchRatio: 1,
+    shortSwipes: true,
+    longSwipesRatio: 0.5,
+
+    // Desktop navigation
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+
+    on: {
+      init: function () {
+        updateSlideCounter(this);
+        updateThumbnails(this);
+      },
+      slideChange: function () {
+        updateSlideCounter(this);
+        updateThumbnails(this);
+      },
+    },
+  });
+
+  // Mobile navigation buttons
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      gallerySwiper.slidePrev();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      gallerySwiper.slideNext();
+    });
+  }
+
+  // Thumbnail click
+  const thumbs = document.querySelectorAll(".thumb");
+  thumbs.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => {
+      gallerySwiper.slideTo(index);
+    });
+  });
+
+  // Update slide counter
+  function updateSlideCounter(swiper) {
+    const currentSlide = document.querySelector(".current-slide");
+    const totalSlides = document.querySelector(".total-slides");
+
+    if (currentSlide) {
+      currentSlide.textContent = swiper.realIndex + 1;
+    }
+
+    if (totalSlides) {
+      totalSlides.textContent =
+        swiper.slides.length - (swiper.params.loop ? 2 : 0);
+    }
+  }
+
+  // Update active thumbnail
+  function updateThumbnails(swiper) {
+    const thumbs = document.querySelectorAll(".thumb");
+    const activeIndex = swiper.realIndex;
+
+    thumbs.forEach((thumb, index) => {
+      if (index === activeIndex) {
+        thumb.classList.add("active");
+      } else {
+        thumb.classList.remove("active");
+      }
+    });
+  }
+
+  // Modal functionality
+  const modal = document.getElementById("galleryModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalCaption = document.getElementById("modalCaption");
+  const modalClose = document.querySelector(".modal-close");
+  const modalPrev = document.querySelector(".modal-prev");
+  const modalNext = document.querySelector(".modal-next");
+  const zoomBtns = document.querySelectorAll(".zoom-btn");
+  const imageContainers = document.querySelectorAll(".image-container");
+
+  // Open modal with image
+  function openModal(index) {
+    const slide = gallerySwiper.slides[index];
+    const img = slide.querySelector("img");
+    const caption = slide.querySelector(".caption").textContent;
+
+    modalImage.src = img.dataset.src || img.src;
+    modalCaption.textContent = caption;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    // Update modal navigation to current index
+    currentModalIndex = index;
+  }
+
+  // Close modal
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // Event listeners for images
+  imageContainers.forEach((container, index) => {
+    // Click on image container
+    container.addEventListener("click", (e) => {
+      if (!e.target.closest(".zoom-btn")) {
+        openModal(index);
+      }
+    });
+  });
+
+  // Event listeners for zoom buttons
+  zoomBtns.forEach((btn, index) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openModal(index);
+    });
+  });
+
+  // Modal navigation
+  let currentModalIndex = 0;
+
+  modalPrev.addEventListener("click", () => {
+    currentModalIndex =
+      (currentModalIndex - 1 + gallerySwiper.slides.length) %
+      gallerySwiper.slides.length;
+    openModal(currentModalIndex);
+  });
+
+  modalNext.addEventListener("click", () => {
+    currentModalIndex = (currentModalIndex + 1) % gallerySwiper.slides.length;
+    openModal(currentModalIndex);
+  });
+
+  // Close modal events
+  modalClose.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!modal.classList.contains("active")) return;
+
+    switch (e.key) {
+      case "Escape":
+        closeModal();
+        break;
+      case "ArrowRight":
+        modalPrev.click();
+        break;
+      case "ArrowLeft":
+        modalNext.click();
+        break;
+    }
+  });
+
+  // Swipe to close modal on mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  modal.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  modal.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        modalPrev.click(); // Swipe right -> previous
+      } else {
+        modalNext.click(); // Swipe left -> next
+      }
+    }
+  }
+
+  // Lazy loading for thumbnails
+  const observerOptions = {
+    root: null,
+    rootMargin: "50px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target.querySelector("img");
+        if (img && img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute("data-src");
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe gallery items
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    observer.observe(item);
+  });
+});

@@ -16,13 +16,15 @@
     <script src="../../scripts/chart.js"></script>
   </head>
   <body>
-    <header>
+    <header class="main-header">
       <div class="header-wave"></div>
       <div class="container header-content">
         <div class="logo">
           <img src="images/logo.png" alt="PixArtSat Logo" />
+
           <div class="logo-text">
             <h1>PixArtSat</h1>
+            <p>Where Science Turns Into Art</p>
           </div>
         </div>
       </div>
@@ -32,23 +34,134 @@
       <div class="container">
         <div class="product-card fade-in">
           <div class="product-header">
-            <h2>تابلو علمی-هنری از خور موسی خلیج فارس</h2>
+            <h3>تابلو علمی-هنری از خور موسی خلیج فارس</h3>
             <p>
               ترکیب هنر، طبیعت و فناوری سنجش از دور در پردازش تصاویر ماهواره ای
             </p>
           </div>
+          <div class="gallery-section">
+            <h3>گالری تصاویر محصول</h3>
 
+            <!-- Navigation for mobile -->
+            <div class="gallery-mobile-nav">
+              <button class="nav-btn prev-btn" aria-label="تصویر قبلی">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="slide-counter">
+                <span class="current-slide">1</span> /
+                <span class="total-slides">3</span>
+              </div>
+              <button class="nav-btn next-btn" aria-label="تصویر بعدی">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+            </div>
+
+            <div class="swiper-container gallery-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide gallery-item">
+                  <div class="image-container">
+                    <img
+                      src="images/tablo.png"
+                      alt="نمای نزدیک تابلو"
+                      loading="lazy"
+                      data-src="images/tablo.png"
+                    />
+                    <div class="image-overlay">
+                      <button class="zoom-btn" aria-label="بزرگنمایی تصویر">
+                        <i class="fas fa-search-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="caption">نمای نزدیک تابلو</div>
+                </div>
+
+                <div class="swiper-slide gallery-item">
+                  <div class="image-container">
+                    <img
+                      src="images/moc1.png"
+                      alt="نمای محیط نصب"
+                      loading="lazy"
+                      data-src="images/moc1.png"
+                    />
+                    <div class="image-overlay">
+                      <button class="zoom-btn" aria-label="بزرگنمایی تصویر">
+                        <i class="fas fa-search-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="caption">نمای محیط نصب</div>
+                </div>
+
+                <div class="swiper-slide gallery-item">
+                  <div class="image-container">
+                    <img
+                      src="images/moc2.png"
+                      alt="نمای تم تیره"
+                      loading="lazy"
+                      data-src="images/moc2.png"
+                    />
+                    <div class="image-overlay">
+                      <button class="zoom-btn" aria-label="بزرگنمایی تصویر">
+                        <i class="fas fa-search-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="caption">نصب با تم تیره</div>
+                </div>
+              </div>
+
+              <!-- Desktop navigation -->
+              <div class="swiper-button-next desktop-nav"></div>
+              <div class="swiper-button-prev desktop-nav"></div>
+              <div class="swiper-pagination desktop-pagination"></div>
+            </div>
+
+            <!-- Thumbnails for mobile -->
+            <div class="gallery-thumbnails">
+              <div class="thumb active" data-index="0">
+                <img src="images/tablo.png" alt="تصویر کوچک ۱" />
+              </div>
+              <div class="thumb" data-index="1">
+                <img src="images/moc1.png" alt="تصویر کوچک ۲" />
+              </div>
+              <div class="thumb" data-index="2">
+                <img src="images/moc2.png" alt="تصویر کوچک ۳" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal for fullscreen view -->
+          <div class="gallery-modal" id="galleryModal">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="بستن">
+                <i class="fas fa-times"></i>
+              </button>
+              <button class="modal-prev" aria-label="تصویر قبلی">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="modal-image-container">
+                <img id="modalImage" src="" alt="" />
+              </div>
+              <button class="modal-next" aria-label="تصویر بعدی">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="modal-caption" id="modalCaption"></div>
+            </div>
+          </div>
           <div class="product-body">
             <div class="qr-section">
-              <div class="qr-container">
-                <img src="images/persian-gulf.png" alt="QR Code" />
-              </div>
-              <div class="qr-info">
-                <h3>دسترسی سریع به توضیحات</h3>
-                <p>
-                  با اسکن این QR کد می‌توانید به صفحه توضیحات این اثر هنری
-                  دسترسی پیدا کنید
-                </p>
+              <div class="qr-wrapper">
+                <div class="qr-container">
+                  <img src="images/persian-gulf.png" alt="QR Code" />
+                </div>
+
+                <div class="qr-info">
+                  <h3>دسترسی سریع به توضیحات</h3>
+                  <p>
+                    با اسکن این QR کد می‌توانید به صفحه توضیحات این اثر هنری
+                    دسترسی پیدا کنید
+                  </p>
+                </div>
               </div>
 
               <!-- بخش پخش کننده صوتی -->
@@ -99,8 +212,6 @@
                           class="speed-list"
                           aria-hidden="true"
                         >
-                          <button data-rate="0.5">0.5x</button>
-                          <button data-rate="0.75">0.75x</button>
                           <button data-rate="1">1x</button>
                           <button data-rate="1.25">1.25x</button>
                           <button data-rate="1.5">1.5x</button>
@@ -148,79 +259,41 @@
               </div>
             </div>
 
-            <div class="gallery-section">
-              <h3>گالری تصاویر محصول</h3>
-              <div class="swiper-container gallery-container">
-                <div class="swiper-wrapper">
-                  <div
-                    class="swiper-slide gallery-item"
-                    onclick="openModal('images/tablo.png')"
-                  >
-                    <div class="image-container">
-                      <img src="images/tablo.png" alt="نمای نزدیک تابلو" />
-                    </div>
-                    <div class="caption">نمای نزدیک تابلو</div>
-                  </div>
-                  <div
-                    class="swiper-slide gallery-item"
-                    onclick="openModal('images/moc1.png')"
-                  >
-                    <div class="image-container">
-                      <img src="images/moc1.png" alt="نمای محیط نصب" />
-                    </div>
-                    <div class="caption">نمای محیط نصب</div>
-                  </div>
-                  <div
-                    class="swiper-slide gallery-item"
-                    onclick="openModal('images/moc2.png')"
-                  >
-                    <div class="image-container">
-                      <img src="images/moc2.png" alt="نمای تم تیره" />
-                    </div>
-                    <div class="caption">نصب با تم تیره</div>
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+            <div class="details-section">
+              <h3>مشخصات فنی</h3>
+              <div class="specs" id="technicalSpecs">
+                <!-- محتوا توسط JS پر می‌شود -->
               </div>
 
-              <div class="details-section">
-                <h3>مشخصات فنی</h3>
-                <div class="specs" id="technicalSpecs">
-                  <!-- محتوا توسط JS پر می‌شود -->
-                </div>
+              <div class="art-description">
+                <h3 id="artTitle">توضیحات هنری</h3>
+                <p id="artContent"></p>
+              </div>
 
-                <div class="art-description">
-                  <h3 id="artTitle">توضیحات هنری</h3>
-                  <p id="artContent"></p>
+              <div class="spectral-chart">
+                <h3>تحلیل طیفی تصویر</h3>
+                <div class="chart-container">
+                  <canvas id="spectralChart"></canvas>
                 </div>
-
-                <div class="spectral-chart">
-                  <h3>تحلیل طیفی تصویر</h3>
-                  <div class="chart-container">
-                    <canvas id="spectralChart"></canvas>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <span class="color-band visible"></span> محدوده مرئی
                   </div>
-                  <div class="chart-legend">
-                    <div class="legend-item">
-                      <span class="color-band visible"></span> محدوده مرئی
-                    </div>
-                    <div class="legend-item">
-                      <span class="color-band used"></span> باندهای استفاده شده
-                    </div>
+                  <div class="legend-item">
+                    <span class="color-band used"></span> باندهای استفاده شده
                   </div>
                 </div>
+              </div>
 
-                <div class="action-section">
-                  <button id="mapBtn" class="map-btn">
-                    مشاهده در Google Maps
-                    <i class="fas fa-external-link-alt"></i>
-                  </button>
+              <div class="action-section">
+                <button id="mapBtn" class="map-btn">
+                  مشاهده در Google Maps
+                  <i class="fas fa-external-link-alt"></i>
+                </button>
 
-                  <div id="artistProfile" class="portfolio-profile">
-                    <img src="" alt="پروفایل" />
-                    <span>مشاهده پرتفولیو هنرمند</span>
-                  </div>
+                <div id="artistProfile" class="portfolio-profile">
+                  <img src="" alt="پروفایل" />
+                  <span>مشاهده پرتفولیو</span>
                 </div>
               </div>
             </div>
