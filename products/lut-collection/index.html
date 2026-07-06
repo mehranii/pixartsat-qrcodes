@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixArtSat - تابلو هنری دشت لوت</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="../../scripts/chart.js"></script>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-wave"></div>
+      <div class="container header-content">
+        <div class="logo">
+          <img src="images/logo.png" alt="PixArtSat Logo" />
+
+          <div class="logo-text">
+            <h1>PixArtSat</h1>
+            <p>Where Science Turns Into Art</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        <div class="product-card fade-in">
+          <div class="product-header">
+            <h3>کلوت های شهداد و ریگ یلان دشت لوت</h3>
+            <p>
+              ترکیب هنر، طبیعت و فناوری سنجش از دور در پردازش تصاویر ماهواره ای
+            </p>
+          </div>
+          <div class="gallery-section">
+            <h3>گالری تصاویر محصول</h3>
+
+            <!-- Navigation for mobile -->
+            <div class="gallery-mobile-nav">
+              <button class="nav-btn prev-btn" aria-label="تصویر قبلی">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="slide-counter">
+                <span class="current-slide">1</span> /
+                <span class="total-slides">3</span>
+              </div>
+              <button class="nav-btn next-btn" aria-label="تصویر بعدی">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+            </div>
+
+            <div class="swiper-container gallery-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide gallery-item">
+                  <div class="image-container">
+                    <img
+                      src="images/tablo.png"
+                      alt="نمای نزدیک تابلو"
+                      loading="lazy"
+                      data-src="images/tablo.png"
+                    />
+                    <div class="image-overlay">
+                      <button class="zoom-btn" aria-label="بزرگنمایی تصویر">
+                        <i class="fas fa-search-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="caption">نمای نزدیک تابلو</div>
+                </div>
+
+                <div class="swiper-slide gallery-item">
+                  <div class="image-container">
+                    <img
+                      src="images/moc1.png"
+                      alt="نمای محیط نصب"
+                      loading="lazy"
+                      data-src="images/moc1.png"
+                    />
+                    <div class="image-overlay">
+                      <button class="zoom-btn" aria-label="بزرگنمایی تصویر">
+                        <i class="fas fa-search-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="caption">نمای محیط نصب</div>
+                </div>
+
+                <div class="swiper-slide gallery-item">
+                  <div class="image-container">
+                    <img
+                      src="images/moc2.png"
+                      alt="نمای تم تیره"
+                      loading="lazy"
+                      data-src="images/moc2.png"
+                    />
+                    <div class="image-overlay">
+                      <button class="zoom-btn" aria-label="بزرگنمایی تصویر">
+                        <i class="fas fa-search-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="caption">نصب با تم تیره</div>
+                </div>
+              </div>
+
+              <!-- Desktop navigation -->
+              <div class="swiper-button-next desktop-nav"></div>
+              <div class="swiper-button-prev desktop-nav"></div>
+              <div class="swiper-pagination desktop-pagination"></div>
+            </div>
+
+            <!-- Thumbnails for mobile -->
+            <div class="gallery-thumbnails">
+              <div class="thumb active" data-index="0">
+                <img src="images/pic4.png" alt="تصویر کوچک ۱" />
+              </div>
+              <div class="thumb" data-index="1">
+                <img src="images/pic1.jpg" alt="تصویر کوچک ۲" />
+              </div>
+              <div class="thumb" data-index="2">
+                <img src="images/pic3.jpg" alt="تصویر کوچک ۳" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal for fullscreen view -->
+          <div class="gallery-modal" id="galleryModal">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="بستن">
+                <i class="fas fa-times"></i>
+              </button>
+              <button class="modal-prev" aria-label="تصویر قبلی">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="modal-image-container">
+                <img id="modalImage" src="" alt="" />
+              </div>
+              <button class="modal-next" aria-label="تصویر بعدی">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="modal-caption" id="modalCaption"></div>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="qr-section">
+              <div class="qr-wrapper">
+                <div class="qr-container">
+                  <img src="images/lut-collection.png" alt="QR Code" />
+                </div>
+
+                <div class="qr-info">
+                  <h3>دسترسی سریع به توضیحات</h3>
+                  <p>
+                    با اسکن این QR کد می‌توانید به صفحه توضیحات این اثر هنری
+                    دسترسی پیدا کنید
+                  </p>
+                </div>
+              </div>
+
+              <!-- بخش پخش کننده صوتی -->
+              <div class="audio-section">
+                <h3>داستان ماهواره‌ای که این اثر را خلق کرد</h3>
+
+                <div class="audio-player">
+                  <button id="playBtn" class="audio-control" title="پخش / مکث">
+                    <i class="fas fa-play"></i>
+                  </button>
+
+                  <div class="audio-info">
+                    <div class="audio-title">
+                      <div class="title-text">هنر طول موج ها</div>
+                      <div id="speedIndicator" class="speed-indicator">1x</div>
+                    </div>
+
+                    <!-- waveform container (WaveSurfer نمایشگر) -->
+                    <div id="waveform"></div>
+
+                    <!-- سطر کنترل‌های اضافی: زمان، جلو/عقب، سرعت -->
+                    <div class="controls-row">
+                      <div style="display: flex; gap: 6px; align-items: center">
+                        <button
+                          id="ffBtn"
+                          class="action-btn"
+                          title="15 ثانیه جلو"
+                        >
+                          <i class="fas fa-forward"></i>
+                        </button>
+                        <button
+                          id="rewBtn"
+                          class="action-btn"
+                          title="15 ثانیه عقب"
+                        >
+                          <i class="fas fa-backward"></i>
+                        </button>
+                      </div>
+
+                      <div class="time" id="currentTime">00:00</div>
+
+                      <div style="flex: 1"></div>
+
+                      <div class="speed-picker">
+                        <button id="speedBtn" class="action-btn">x1</button>
+                        <div
+                          id="speedList"
+                          class="speed-list"
+                          aria-hidden="true"
+                        >
+                          <button data-rate="1">1x</button>
+                          <button data-rate="1.25">1.25x</button>
+                          <button data-rate="1.5">1.5x</button>
+                          <button data-rate="2">2x</button>
+                        </div>
+                      </div>
+
+                      <div class="time" id="duration">--:--</div>
+                    </div>
+                  </div>
+
+                  <!-- المان صوتی (برای سازگاری و fallback) -->
+                  <audio
+                    id="audioPlayer"
+                    preload="auto"
+                    style="display: none"
+                  ></audio>
+                </div>
+              </div>
+              <!-- بخش دانلود PDF -->
+              <div class="pdf-section">
+                <h3>مستندات تکمیلی اثر هنری</h3>
+                <div class="pdf-download">
+                  <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </div>
+                  <div class="pdf-info">
+                    <div class="pdf-title">
+                      ماهواره ها
+                      <span class="pdf-size">177 KB</span>
+                    </div>
+                    <div class="pdf-progress">
+                      <div class="progress-bar" id="pdfProgressBar"></div>
+                    </div>
+                  </div>
+                  <a
+                    href="../../scripts/pixartsat.pdf"
+                    download
+                    class="download-btn"
+                    title="دانلود فایل"
+                  >
+                    <i class="fas fa-download"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h3>مشخصات فنی</h3>
+              <div class="specs" id="technicalSpecs">
+                <!-- محتوا توسط JS پر می‌شود -->
+              </div>
+
+              <div class="art-description">
+                <h3 id="artTitle">توضیحات هنری</h3>
+                <p id="artContent"></p>
+              </div>
+
+              <div class="spectral-chart">
+                <h3>تحلیل طیفی تصویر</h3>
+                <div class="chart-container">
+                  <canvas id="spectralChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <span class="color-band visible"></span> محدوده مرئی
+                  </div>
+                  <div class="legend-item">
+                    <span class="color-band used"></span> باندهای استفاده شده
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-section">
+                <button id="mapBtn" class="map-btn">
+                  مشاهده در Google Maps
+                  <i class="fas fa-external-link-alt"></i>
+                </button>
+
+                <div id="artistProfile" class="portfolio-profile">
+                  <img src="" alt="پروفایل" />
+                  <span>مشاهده پرتفولیو</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>درباره PixArtSat</h3>
+            <p>
+              برند PixArtSat با ترکیب هنر، طبیعت و فناوری‌ سنجش از دور، آثار
+              هنری منحصر به فردی خلق می‌کند که هر کدام بیانگر یک موقعیت
+              جغرافیایی خاص هستند.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>تماس با ما</h3>
+            <a href="tel:+982122334455"
+              ><i class="fas fa-phone"></i> 09199290537</a
+            >
+            <a href="mailto:info@pixartsat.com"
+              ><i class="fas fa-envelope"></i> info@pixartsat.com</a
+            >
+            <a href="#"
+              ><i class="fas fa-map-marker-alt"></i> تاکستان، استان قزوین</a
+            >
+          </div>
+          <div class="footer-column">
+            <h3>لینک‌های مفید</h3>
+            <a href="https://instagram.com/pixartsat">نمونه کارها</a>
+            <a href="https://instagram.com/mehran.rhmni">وبلاگ</a>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a
+            href="https://instagram.com/pixartsat"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://t.me/mehranrhmni"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-telegram"></i>
+          </a>
+          <a
+            href="https://linkedin.com/in/mehran-rahmani-b1467b213"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://wa.me/989199290537"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <div class="copyright">
+          <p>
+            کلیه حقوق مادی و معنوی این سایت متعلق به PixArtSat می‌باشد. © 2025
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- مودال برای تصاویر بزرگ -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="تصویر بزرگ" />
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
